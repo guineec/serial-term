@@ -5,9 +5,9 @@ I've only tested this with one device but it should work for anything that uses 
 
 ## Installation  
 To install, just run:  
-    ```bash
-    $ gem install sterm`
-    ```
+```bash
+$ gem install sterm
+```
 
 ## Usage
 
