@@ -18,4 +18,7 @@ Default line ending is 0d0a (which is "\r\n" in hex).
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/guineec/sterm.
+Bug reports and pull requests are welcome on GitHub at https://github.com/guineec/sterm.  
+  
+## License  
+This program is licensed under the <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt">GNU GPLv2.0</a> as required by the use of <a href="https://rubygems.org/gems/serialport/versions/1.3.1" target="_blank">serialport</a>.

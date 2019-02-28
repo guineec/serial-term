@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Sterm::VERSION
   spec.authors       = ["Cian Guinee"]
   spec.email         = ["cian.guinee@gmail.com"]
-
+  spec.licenses      = ["GPL-2.0"] # As required by the serialport dependency
   spec.summary       = %q{Shows data transmitted from a UART device}
   spec.homepage      = "https://github.com/guineec/serial-term"
 
@@ -23,6 +23,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.17"
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_dependency "serialport"
-  spec.add_dependency "rainbow"
+  spec.add_dependency "serialport", "~> 1.3.1"
+  spec.add_dependency "rainbow", "~> 3.0.0"
 end
