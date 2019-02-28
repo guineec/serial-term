@@ -6,7 +6,7 @@ require "sterm/version"
 Gem::Specification.new do |spec|
   spec.name          = "sterm"
   spec.version       = Sterm::VERSION
-  s.executables << 'sterm'
+  spec.executables << 'sterm'
   spec.authors       = ["Cian Guinee"]
   spec.email         = ["cian.guinee@gmail.com"]
   spec.licenses      = ["GPL-2.0"] # As required by the serialport dependency
