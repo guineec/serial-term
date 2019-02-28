@@ -1,5 +1,7 @@
 # SerialTerm
-SerialTerm is a very simple command line tool to output data received from a serial device using the <a href="https://rubygems.org/gems/serialport/versions/1.3.1" target="_blank">serialport</a> gem.  
+SerialTerm is a very simple command line tool to output data received from a serial device. It's built in ruby, and the <a href="https://rubygems.org/gems/serialport/versions/1.3.1" target="_blank">serialport</a> gem does most of the heavy lifting.  
+
+I've only tested this with one device but it should work for anything that uses a serial output. If you find errors/exceptions feel free to report them or fix them and issue a pull request.
 
 ## Installation  
 To install, just run:  
