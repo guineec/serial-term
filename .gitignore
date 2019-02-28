@@ -6,4 +6,4 @@
 /pkg/
 /spec/reports/
 /tmp/
-sterm-.*.gem
+*.gem

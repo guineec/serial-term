@@ -6,10 +6,11 @@ require "sterm/version"
 Gem::Specification.new do |spec|
   spec.name          = "sterm"
   spec.version       = Sterm::VERSION
+  s.executables << 'sterm'
   spec.authors       = ["Cian Guinee"]
   spec.email         = ["cian.guinee@gmail.com"]
   spec.licenses      = ["GPL-2.0"] # As required by the serialport dependency
-  spec.summary       = %q{Shows data transmitted from a UART device}
+  spec.summary       = %q{Shows data transmitted from a serial device}
   spec.homepage      = "https://github.com/guineec/serial-term"
 
   # Specify which files should be added to the gem when it is released.
