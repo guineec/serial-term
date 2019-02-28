@@ -5,15 +5,15 @@ I've only tested this with one device but it should work for anything that uses 
 
 ## Installation  
 To install, just run:  
-```bash
+`
 $ gem install sterm
-```
+`
 
 ## Usage
 
-```bash
+`
 $ sterm DEVICE_PATH [-b BAUD_RATE -d DATA_BITS -s STOP_BITS -e LINE_ENDING]
-```
+`
   
 Default baud rate is 115200  
 Default data bits is 8  
