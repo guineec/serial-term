@@ -62,13 +62,7 @@ Usage: sterm DEVICE_PATH [options]\nTry starting with `sterm -h` for help\n\n}
     else
       device_path = ARGV[0]
     end
-
-    # ...and check the descriptor exists
-    if !File.file?(device_path)
-      STDERR.puts Rainbow("ERROR:").red + " Device not found at " + device_path
-      exit(13)
-    end
-
+    
     # Set the options 
     baud_rate = opts[:baud_rate]
     if baud_rate.nil? || baud_rate.empty?
@@ -100,7 +94,12 @@ Usage: sterm DEVICE_PATH [options]\nTry starting with `sterm -h` for help\n\n}
       puts Rainbow("INFO:").aqua + " Using default line ending of \"ODOA\" (\\r\\n)."
     end
 
-    sp = SerialPort.new(device_path, baud_rate, data_bits, stop_bits, SerialPort::NONE)
+    begin 
+      sp = SerialPort.new(device_path, baud_rate, data_bits, stop_bits, SerialPort::NONE)
+    rescue Errno::ENOENT
+      STDERR.puts Rainbow("ERROR:").red + " Device not found at " + device_path
+      exit(13)
+    end
 
     if sp.nil?
       puts Rainbow("ERROR:").red + " Couldn't initialize device at path " + device_path
