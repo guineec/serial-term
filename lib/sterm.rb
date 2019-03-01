@@ -117,17 +117,23 @@ Usage: sterm DEVICE_PATH [options]\nTry starting with `sterm -h` for help\n\n}
     puts Rainbow("CONNECT: ").green + " Connected to device at " + device_path
     
     line_num = 1
-    while (line = sp.readline(line_end))
-      nspaces = (6 - (line_num.to_s.length))
-      nspaces = 1 if nspaces < 1
-      line_num_text = "[#{line_num}]" + (" " * nspaces)
 
-      if opts[:line_numbers]
-        puts line_num_text + Rainbow(device_path + ": ").yellow + line.chomp!
-        line_num += 1
-      else
-        puts Rainbow(device_path + ": ").yellow + line.chomp!
+    begin
+      while (line = sp.readline(line_end))
+        nspaces = (6 - (line_num.to_s.length))
+        nspaces = 1 if nspaces < 1
+        line_num_text = "[#{line_num}]" + (" " * nspaces)
+
+        if opts[:line_numbers]
+          puts line_num_text + Rainbow(device_path + ": ").yellow + line.chomp!
+          line_num += 1
+        else
+          puts Rainbow(device_path + ": ").yellow + line.chomp!
+        end
       end
+    rescue EOFError
+      puts "\n" + Rainbow("ERROR:").red + " Device disconnected"
+      exit 14
     end
   end
 end
