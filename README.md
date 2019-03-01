@@ -1,5 +1,5 @@
 # SerialTerm
-<p align="left">
+<p align="center">
   <img width="196" height="150" src="https://files.cians.site/sterm_image.png">
 </p>
 SerialTerm is a very simple command line tool to output data received from a serial device. It's built in ruby, and the <a href="https://rubygems.org/gems/serialport/versions/1.3.1" target="_blank">serialport</a> gem does most of the heavy lifting.  
