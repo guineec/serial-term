@@ -47,6 +47,10 @@ Usage: sterm DEVICE_PATH [options]\nTry starting with `sterm -h` for help\n\n}
         opts[:ending] = ending
       end
 
+      options.on("-n", "--[no-]line-numbers", "Print numbers at the start of each line of output (Default: true)") do |nums|
+        opts[:line_numbers] = nums
+      end
+
       options.on_tail("-v", "--version", "Show version") do
         puts Rainbow("SerialTerm version:").aqua + " #{Sterm::VERSION}"
         exit
@@ -94,6 +98,10 @@ Usage: sterm DEVICE_PATH [options]\nTry starting with `sterm -h` for help\n\n}
       puts Rainbow("INFO:").aqua + " Using default line ending of \"ODOA\" (\\r\\n)."
     end
 
+    if opts[:line_numbers].nil?
+      opts[:line_numbers] = true
+    end
+
     begin 
       sp = SerialPort.new(device_path, baud_rate, data_bits, stop_bits, SerialPort::NONE)
     rescue Errno::ENOENT
@@ -107,9 +115,19 @@ Usage: sterm DEVICE_PATH [options]\nTry starting with `sterm -h` for help\n\n}
     end
 
     puts Rainbow("CONNECT: ").green + " Connected to device at " + device_path
-  
+    
+    line_num = 1
     while (line = sp.readline(line_end))
-      puts Rainbow(device_path + ": ").yellow + line.chomp!
+      nspaces = (6 - (line_num.to_s.length))
+      nspaces = 1 if nspaces < 1
+      line_num_text = "[#{line_num}]" + (" " * nspaces)
+
+      if opts[:line_numbers]
+        puts line_num_text + Rainbow(device_path + ": ").yellow + line.chomp!
+        line_num += 1
+      else
+        puts Rainbow(device_path + ": ").yellow + line.chomp!
+      end
     end
   end
 end
