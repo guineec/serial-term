@@ -54,13 +54,19 @@ Usage: sterm DEVICE_PATH [options]\nTry starting with `sterm -h` for help\n\n}
     end
     op.parse!(arguments)
 
-    # Ensure the device path is given
+    # Ensure the device path is given...
     device_path = ""
     if ARGV.length < 1 
       STDERR.puts Rainbow("ERROR:").red + " No device path specified. Exiting."
       exit(11)
     else
       device_path = ARGV[0]
+    end
+
+    # ...and check the descriptor exists
+    if !File.file?(device_path)
+      STDERR.puts Rainbow("ERROR:").red + " Device not found at " + device_path
+      exit(13)
     end
 
     # Set the options 
