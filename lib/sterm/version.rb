@@ -16,5 +16,5 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 module Sterm
-  VERSION = "0.2.0"
+  VERSION = "0.2.1"
 end
