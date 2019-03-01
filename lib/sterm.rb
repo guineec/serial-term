@@ -25,6 +25,7 @@ module Sterm
 
   def sterm(arguments)
     # Parse the arguments provided by the user
+    arguments << '-h' if arguments.empty?
     opts = {}
     op = OptionParser.new do |options|
       options.banner = %Q{SerialTerm is a very simple command line tool to output data received from a serial device.
@@ -42,8 +43,13 @@ Usage: sterm DEVICE_PATH [options]\nTry starting with `sterm -h` for help\n\n}
         opts[:stop_bits] = stop_bits
       end
 
-      options.on("-e STRING", "--ends-with", "The string (in hex) that terminates each line sent by the device (Default: \"0D0A\" (\\r\\n)") do |ending|
+      options.on("-e STRING", "--ends-with", "The string (in hex) that terminates each line (Default: \"0D0A\")") do |ending|
         opts[:ending] = ending
+      end
+
+      options.on_tail("-v", "--version", "Show version") do
+        puts Rainbow("SerialTerm version:").aqua + " #{Sterm::VERSION}"
+        exit
       end
     end
     op.parse!(arguments)
